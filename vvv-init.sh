@@ -1,5 +1,5 @@
 #!/bin/bash
-SITE_NAME="Human Readable Site Name"
+SITE_NAME="Site Name"
 DB_NAME="database_name"
 SITE_URL="http://local.site-name"
 
