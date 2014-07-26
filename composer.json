@@ -1,33 +1,46 @@
 {
-	"name"              : "cftp/vvv-init",
-	"description"       : "An auto-site setup for VVV",
-	"homepage"          : "https://github.com/cftp/vvv-init",
-	"license"           : "GPL-2.0",
-	"authors"           : [
-			{
-				"name"    : "Code For The People",
-				"homepage": "http://codeforthepeople.com"
-			}
-	],
-	"type"              : "project",
-	"minimum-stability" : "dev",
-	"repositories"      : [
-		{ "type" : "composer", "url" : "http://wpackagist.org" },
-		{ "type" : "composer", "url" : "http://packages.codeforthepeople.com/" }
-	],
-	"config"      : {
-		"vendor-dir":  "htdocs/wp-content/vendor"
-	},
-	"require"     : {
-		"johnbillion/query-monitor"                        : "dev-master",
-		"php"                                              : ">=5.2.4"
-	},
-	"require-dev" : {
-	},
-	"extra"       : {
-		"installer-paths": {
-			"htdocs/wp-content/plugins/{$name}/"     : ["type:wordpress-plugin"],
-			"htdocs/wp-content/themes/{$name}/"      : ["type:wordpress-theme"]
-		}
-	}
+    "name": "pie/vvv-init",
+    "description": "An auto-site setup for VVV",
+    "homepage": "https://github.com/piewebltd/vvv-init",
+    "authors": [
+        {
+            "name": "PIE",
+            "homepage": "http://pie.co.de"
+        }
+    ],
+    "type": "project",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "require": {
+        "php": ">=5.3.2",
+        "johnpbloch/wordpress": "3.9.x",
+        "wpackagist-plugin/akismet": "*",
+        "wpackagist-plugin/w3-total-cache": "*",
+        "wpackagist-plugin/wordpress-seo": "*",
+        "wpackagist-theme/twentyfourteen": "*"
+    },
+    "require-dev": {
+        "wpackagist-plugin/user-switching": "*",
+        "wpackagist-plugin/theme-check": "*",
+        "wpackagist-plugin/debug-bar": "*"
+    },
+    "extra": {
+        "wordpress-install-dir": "public_html/wp/",
+        "installer-paths": {
+            "public_html/wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "public_html/wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
+    }
 }
