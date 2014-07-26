@@ -1,1 +1,3 @@
-initial-data.sql
+composer.lock
+vendor
+public_html/*
