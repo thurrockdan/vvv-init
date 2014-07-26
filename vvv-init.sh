@@ -11,7 +11,7 @@ echo "Running Composer to download dependencies"
 composer install --prefer-dist
 
 if [ ! -f public_html/wp-config.php ]
-then
+	then
 	echo "Creating wp-config.php and moving it up into public_html because we like it there"
 
 	wp core config --dbname="$DB_NAME" --dbuser=wp --dbpass=wp --dbhost="localhost" --dbprefix="wp_"  --extra-php <<PHP
@@ -23,7 +23,7 @@ then
 	define('SAVEQUERIES', true);
 
 PHP
-mv public_html/wp/wp-config.php public_html/wp-config.php
+	mv public_html/wp/wp-config.php public_html/wp-config.php
 else
 	echo "wp-config.php already exists"
 fi
