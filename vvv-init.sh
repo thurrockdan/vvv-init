@@ -6,7 +6,7 @@ DB_NAME="site_name"
 # The repo URL in SSH format, e.g. git@github.com:cftp/foo.git
 REPO_SSH_URL="git@github.com:pie/site_name.git"
 # Values for searching and replacing
-SEARCHDOMAIN="search-site-name"
+SEARCHDOMAIN="search-name"
 REPLACEDOMAIN="local.site-name"
 # The multisite stuff for wp-config.php
 EXTRA_CONFIG="
@@ -111,6 +111,7 @@ elif ! $(wp core is-installed ); then
 	echo "Installing initial WordPress DB tables"
 	wp core install --title=$SITE_NAME --admin_user=admin --admin_password=password --admin_email=admin@no.reply
 	wp option update siteurl "$SITE_URL\/wp"
+	wp search-replace "$SEARCHDOMAIN" "$REPLACEDOMAIN"
 fi
 
 

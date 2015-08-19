@@ -5,7 +5,7 @@ You may want to [read our overview](https://github.com/cftp/vvv-init/wiki).
 ## Basic setup
 
 1. Run a search and replace for `site-name` to whatever the subdomain for your development site will be
-2. Run a search and replace for `search-site-name` to whatever the subdomain for your production site is. This will be used to replace domains in the database
+2. Run a search and replace for `search-name` to whatever the subdomain for your production site is. This will be used to replace domains in the database
 3. Run a search and replace for `site_name` to whatever the database name for your development site will be
 4. Run a search and replace for `Site Name` to whatever the human readable name for your development site will be
 5. Remove these initial instructions, leaving the "Development environment bootstrap" heading and everything below it
