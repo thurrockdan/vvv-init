@@ -18,7 +18,7 @@ You may want to [read our overview](https://github.com/cftp/vvv-init/wiki).
 
 See [Composer](https://github.com/cftp/vvv-init/wiki/Introduction#composer) and [Private Repos](https://github.com/cftp/vvv-init/wiki/Introduction#private-repos)
 
-The private and public keys are not included in this publically distributed repo, you will need to copy these into the `.ssh` folder.
+The private and public keys are not included in this publically distributed repo, they are in the Private Repository pie/vvv, which you should be using with this vvv-init repo. You will need to add the public key to any private repos that you wish to include.
 
 You will need to include the Composer autoload, so add this near the top of `wp-config.php` (which is a file you may wish to have under version control, separating out the environment specific portion into a non-version controlled `wp-config-local.php`):
 
