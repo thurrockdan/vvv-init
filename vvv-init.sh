@@ -104,22 +104,26 @@ fi
 # fi
 
 # Make a database, if we don't already have one
-echo "Creating database (if it's not already there)"
-mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS $DB_NAME"
-mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO wp@localhost IDENTIFIED BY 'wp';"
+DATA_IN_DB=`mysql -u root --password=root --skip-column-names -e "SHOW TABLES FROM $DB_NAME;"`
+if [ "" == "$DATA_IN_DB" ]; then
+	echo "Creating database (if it's not already there)"
+	mysql -u root --password=root -e "CREATE DATABASE IF NOT EXISTS $DB_NAME"
+	mysql -u root --password=root -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO wp@localhost IDENTIFIED BY 'wp';"
 
-if [ -f $DB_NAME.sql ]; then
-	echo "Importing DB content from dump file"
+	if [ -f $DB_NAME.sql ]; then
+		echo "Importing DB content from dump file"
 
-	wp db import $DB_NAME.sql
-	wp search-replace "$SEARCHDOMAIN" "$REPLACEDOMAIN"
-elif ! $(wp core is-installed ); then
-	echo "Installing initial WordPress DB tables"
-	wp core install --title=$SITE_NAME --admin_user=admin --admin_password=password --admin_email=admin@no.reply
-	wp option update siteurl "$SITE_URL\/wp"
+		wp db import $DB_NAME.sql
+		wp search-replace "$SEARCHDOMAIN" "$REPLACEDOMAIN"
+	elif ! $(wp core is-installed ); then
+		echo "Installing initial WordPress DB tables"
+		wp core install --title=$SITE_NAME --admin_user=admin --admin_password=password --admin_email=admin@no.reply
+		wp option update siteurl "$SITE_URL\/wp"
 
+	fi
+else
+	echo "database $DB_NAME already exists and has data"
 fi
-
 
 
 # The Vagrant site setup script will restart Nginx for us
