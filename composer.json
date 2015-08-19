@@ -25,7 +25,7 @@
         "wpackagist-plugin/akismet": "-stable",
         "wpackagist-plugin/wp-thumb": "-stable",
         "wpackagist-theme/twentyfourteen": "-stable",
-        "wpackagist-plugin/stream": "-stable",
+        "wpackagist-plugin/stream": "-stable"
     },
     "require-dev": {
         "wpackagist-plugin/user-switching": "*",
