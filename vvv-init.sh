@@ -3,8 +3,6 @@
 SITE_NAME="Site Name"
 # The name (to be) used by MySQL for the DB
 DB_NAME="site_name"
-# The repo URL in SSH format, e.g. git@github.com:cftp/foo.git
-REPO_SSH_URL="git@github.com:pie/site_name.git"
 # Values for searching and replacing
 SEARCHDOMAIN="search-name"
 REPLACEDOMAIN="local.site-name"
@@ -57,45 +55,53 @@ for KNOWN_HOST in $(cat "ssh/known_hosts"); do
 	fi
 done
 
-# Clone the repo, if it's not there already
-if [ ! -d htdocs ]
-then
-	ssh-agent bash -c "ssh-add ssh/cftp_deploy_id_rsa; git clone $REPO_SSH_URL htdocs;"
-	echo "Cloning the repo"
-else
-	echo "The htdocs directory already exists, and should contain the repo. If not, delete it and run Vagrant provisioning again."
-fi
 
 # Run Composer
 echo "Running Composer to download dependencies"
 composer install --prefer-dist
 
 # Let's get some config in the house
-if [ ! -f htdocs/wp-config.php ]; then
-	wp core download --path=htdocs
+if [ ! -f public_html/wp-config.php ]; then
+	echo "Creating wp-config.php and moving it up into public_html because we like it there"
 	wp core config --dbname="$DB_NAME" --dbuser=wp --dbpass=wp --dbhost="localhost" --extra-php <<PHP
+	define( 'WP_CONTENT_DIR', dirname( __FILE__ ) . '/wp-content' );
+	define( 'WP_CONTENT_URL', '$SITE_URL/wp-content' );
+	define( 'WP_DEBUG', true );
+	define( 'WP_DEBUG_LOG', true );
+	define('WP_DEBUG_DISPLAY', false);
+	define('SAVEQUERIES', true);
 $EXTRA_CONFIG
 PHP
+	mv public_html/wp/wp-config.php public_html/wp-config.php
 else
 	echo "wp-config.php already exists"
 fi
+# Move index.php and change path to blog-header so that we can run WordPress in a sub-directory
+if [ ! -f public_html/index.php ]; then
 
-# Load the composer stuff
-./wrapper-composer.sh update
+	echo "Copying index.php and moving it up into public_html because we like it there"
 
-DATA_IN_DB=`mysql -u root --password=root --skip-column-names -e "SHOW TABLES FROM $DB_NAME;"`
-if [ "" == "$DATA_IN_DB" ]; then
-	if [ ! -f initial-data.sql ]
-	then
-		echo "DATABASE NOT INSTALLED, add initial-data.sql file and run Vagrant provisioning again"
-	else
-		echo "Loading the database with lovely data"
-		mysql -u root --password=root $DB_NAME < initial-data.sql
-	fi
-	wp user create dev_admin dev_admin@example.com --role=administrator --user_pass=password
+	cp public_html/wp/index.php public_html/index.php
+	sed -i -e "s/wp-blog-header.php/wp\/wp-blog-header.php/g" public_html/index.php
 else
 	echo "index.php already exists"
 fi
+# Load the composer stuff
+./wrapper-composer.sh update
+
+# DATA_IN_DB=`mysql -u root --password=root --skip-column-names -e "SHOW TABLES FROM $DB_NAME;"`
+# if [ "" == "$DATA_IN_DB" ]; then
+# 	if [ ! -f initial-data.sql ]
+# 	then
+# 		echo "DATABASE NOT INSTALLED, add initial-data.sql file and run Vagrant provisioning again"
+# 	else
+# 		echo "Loading the database with lovely data"
+# 		mysql -u root --password=root $DB_NAME < initial-data.sql
+# 	fi
+# 	wp user create dev_admin dev_admin@example.com --role=administrator --user_pass=password
+# else
+# 	echo "index.php already exists"
+# fi
 
 # Make a database, if we don't already have one
 echo "Creating database (if it's not already there)"
@@ -106,12 +112,12 @@ if [ -f $DB_NAME.sql ]; then
 	echo "Importing DB content from dump file"
 
 	wp db import $DB_NAME.sql
-
+	wp search-replace "$SEARCHDOMAIN" "$REPLACEDOMAIN"
 elif ! $(wp core is-installed ); then
 	echo "Installing initial WordPress DB tables"
 	wp core install --title=$SITE_NAME --admin_user=admin --admin_password=password --admin_email=admin@no.reply
 	wp option update siteurl "$SITE_URL\/wp"
-	wp search-replace "$SEARCHDOMAIN" "$REPLACEDOMAIN"
+
 fi
 
 

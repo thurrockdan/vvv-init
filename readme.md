@@ -4,6 +4,7 @@ You may want to [read our overview](https://github.com/cftp/vvv-init/wiki).
 
 ## Basic setup
 
+1. Add any required additional known hosts to ssh/known_hosts - these will be appended to the known_hosts file in your vagrant box
 1. Run a search and replace for `site-name` to whatever the subdomain for your development site will be
 2. Run a search and replace for `search-name` to whatever the subdomain for your production site is. This will be used to replace domains in the database
 3. Run a search and replace for `site_name` to whatever the database name for your development site will be
