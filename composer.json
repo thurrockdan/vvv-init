@@ -1,7 +1,7 @@
 {
     "name": "pie/vvv-init",
     "description": "An auto-site setup for VVV",
-    "homepage": "https://github.com/piewebltd/vvv-init",
+    "homepage": "https://github.com/pie/vvv-init",
     "authors": [
         {
             "name": "PIE",
@@ -17,19 +17,20 @@
         }
     ],
     "config": {
-        "vendor-dir": "vendor"
+        "vendor-dir": "public_html/wp-content/vendor"
     },
     "require": {
         "php": ">=5.3.2",
-        "johnpbloch/wordpress": "3.9.x",
-        "wpackagist-plugin/akismet": "*",
-        "wpackagist-plugin/w3-total-cache": "*",
-        "wpackagist-plugin/wordpress-seo": "*",
-        "wpackagist-theme/twentyfourteen": "*"
+        "johnpbloch/wordpress": "4.x",
+        "wpackagist-plugin/akismet": "-stable",
+        "wpackagist-plugin/wp-thumb": "-stable",
+        "wpackagist-theme/twentyfourteen": "-stable",
+        "wpackagist-plugin/stream": "-stable",
     },
     "require-dev": {
         "wpackagist-plugin/user-switching": "*",
         "wpackagist-plugin/theme-check": "*",
+        "wpackagist-plugin/query-monitor": "*",
         "wpackagist-plugin/debug-bar": "*"
     },
     "extra": {
@@ -44,3 +45,4 @@
         }
     }
 }
+

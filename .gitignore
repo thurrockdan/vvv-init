@@ -1,3 +1,22 @@
-composer.lock
-vendor
-public_html/*
+build
+package
+
+## START WordPress show/ignore
+## So we don't get the core files in git
+
+# DO ignore htdocs…
+public_html/*.*
+public_html/*/*
+
+# …except do NOT ignore
+!public_html/wp-content/mu-plugins/*.php
+!public_html/wp-content/*.php
+
+# … except DO ignore
+public_html/wp-content/*/*
+public_html/wp-content/mu-plugins/*/*
+public_html/wp-content/db.php
+public_html/wp-content/index.php
+public_html/wp-content/object-cache.php
+
+# END WordPress show/ignore
