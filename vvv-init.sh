@@ -6,10 +6,11 @@ DB_NAME="site_name"
 # Values for searching and replacing
 SEARCHDOMAIN="search-name"
 REPLACEDOMAIN="local.site-name"
-# The multisite stuff for wp-config.php
+# Wordpress multisite network (true/false)
+MULTISITE="true"
+# Append additional config to wp-config.php
 EXTRA_CONFIG="
-// No extra config, but if there was multisite stuff, etc,
-// it would go here.
+// No extra config, but if there was it would go here.
 "
 
 # ----------------------------------------------------------------
@@ -60,6 +61,24 @@ done
 echo "Running Composer to download dependencies"
 composer install --prefer-dist
 
+#Multi site configuration
+if [MULTISITE = true] then
+MULTISITE_CONFIG="
+	define('WP_ALLOW_MULTISITE', true);
+	define('MULTISITE', true);
+	define('SUBDOMAIN', true);
+	define('DOMAIN_CURRENT_SITE', '$REPLACEDOMAIN');
+	define('PATH_CURRENT_SITE', '/');
+	define('SITE_ID_CURRENT_SITE', 1);
+	define('BLOG_ID_CURRENT_SITE', 1);
+	define('SUNRISE', true); 
+"
+else
+MULTISITE_CONFIG ="
+// Not a multisite....
+"
+fi
+
 # Let's get some config in the house
 if [ ! -f public_html/wp-config.php ]; then
 	echo "Creating wp-config.php and moving it up into public_html because we like it there"
@@ -71,6 +90,7 @@ if [ ! -f public_html/wp-config.php ]; then
 	define('WP_DEBUG_DISPLAY', false);
 	define('SAVEQUERIES', true);
 $EXTRA_CONFIG
+$MULTISITE_CONFIG
 PHP
 	mv public_html/wp/wp-config.php public_html/wp-config.php
 else
