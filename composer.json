@@ -22,10 +22,10 @@
     "require": {
         "php": ">=5.3.2",
         "johnpbloch/wordpress": "4.x",
-        "wpackagist-plugin/akismet": "-stable",
-        "wpackagist-plugin/wp-thumb": "-stable",
-        "wpackagist-theme/twentyfourteen": "-stable",
-        "wpackagist-plugin/stream": "-stable"
+        "wpackagist-plugin/akismet": "@stable",
+        "wpackagist-plugin/wp-thumb": "@stable",
+        "wpackagist-theme/twentyfourteen": "@stable",
+        "wpackagist-plugin/stream": "@stable"
     },
     "require-dev": {
         "wpackagist-plugin/user-switching": "*",
