@@ -5,16 +5,17 @@ You may want to [read our overview](https://github.com/cftp/vvv-init/wiki).
 ## Basic setup
 
 1. Add any required additional known hosts to ssh/known_hosts - these will be appended to the known_hosts file in your vagrant box
-1. Run a search and replace for `site-name` to whatever the subdomain for your development site will be
-2. Run a search and replace for `search-name` to whatever the subdomain for your production site is. This will be used to replace domains in the database
-3. Run a search and replace for `site_name` to whatever the database name for your development site will be
-4. Run a search and replace for `Site Name` to whatever the human readable name for your development site will be
-5. Remove these initial instructions, leaving the "Development environment bootstrap" heading and everything below it
-6. Amend the "Development environment bootstrap" heading and paragraph below so it reflects your purpose for the particular development environment
-7. Amend `composer.json` to reflect your project and project dependencies
-8. Test everything works as expected in a [VVV](https://github.com/10up/varying-vagrant-vagrants/) context
-9. Copy or `git push` to a new repo or new branch in an existing repo
-10. Point people towards the `readme.md` in the repo you pushed to, so they can get going
+2. Run a search and replace for `site-name` to whatever the subdomain for your development site will be
+3. Run a search and replace for `search-name` to whatever the subdomain for your production site is. This will be used to replace domains in the database
+4. Run a search and replace for `site_name` to whatever the database name for your development site will be
+5. Run a search and replace for `Site Name` to whatever the human readable name for your development site will be
+6. Amend `vvv-init.sh` defining whether the site is a multisite or standalone
+7. Remove these initial instructions, leaving the "Development environment bootstrap" heading and everything below it
+8. Amend the "Development environment bootstrap" heading and paragraph below so it reflects your purpose for the particular development environment
+9. Amend `composer.json` to reflect your project and project dependencies
+10. Test everything works as expected in a [VVV](https://github.com/10up/varying-vagrant-vagrants/) context
+11. Copy or `git push` to a new repo or new branch in an existing repo
+12. Point people towards the `readme.md` in the repo you pushed to, so they can get going
 
 ## Using Composer
 
