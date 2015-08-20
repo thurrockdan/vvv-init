@@ -14,10 +14,6 @@
         {
             "type": "composer",
             "url": "http://wpackagist.org"
-        },
-   	{
-            "type": "vcs",
-            "url": "git@github.com:humanmade/Mercator.git"
         }
     ],
     "config": {
@@ -29,8 +25,7 @@
         "wpackagist-plugin/akismet": "@stable",
         "wpackagist-plugin/wp-thumb": "@stable",
         "wpackagist-theme/twentyfourteen": "@stable",
-        "wpackagist-plugin/stream": "@stable",
-	"humanmade/mercator": "*"
+        "wpackagist-plugin/stream": "@stable"
     },
     "require-dev": {
         "wpackagist-plugin/user-switching": "*",
@@ -41,9 +36,6 @@
     "extra": {
         "wordpress-install-dir": "public_html/wp/",
         "installer-paths": {
-            "public_html/content/mu-plugins/{$name}/": [
-                "type:wordpress-muplugin"
-            ],
             "public_html/wp-content/plugins/{$name}/": [
                 "type:wordpress-plugin"
             ],
