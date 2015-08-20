@@ -65,13 +65,13 @@ composer install --prefer-dist
 if $MULTISITE; then
 	MULTISITE_CONFIG="
 	define('WP_ALLOW_MULTISITE', true);
-	define('MULTISITE', true);
-	define('SUBDOMAIN', true);
-	define('DOMAIN_CURRENT_SITE', '$REPLACEDOMAIN');
-	define('PATH_CURRENT_SITE', '/');
-	define('SITE_ID_CURRENT_SITE', 1);
-	define('BLOG_ID_CURRENT_SITE', 1);
-	define('SUNRISE', true); 
+	//define('MULTISITE', true);
+	//define('SUBDOMAIN', true);
+	//define('DOMAIN_CURRENT_SITE', '$REPLACEDOMAIN');
+	//define('PATH_CURRENT_SITE', '/');
+	//define('SITE_ID_CURRENT_SITE', 1);
+	//define('BLOG_ID_CURRENT_SITE', 1);
+	//define('SUNRISE', true); 
 "
 	echo "WP Multisite settings saved"
 else
