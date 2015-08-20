@@ -7,7 +7,7 @@ DB_NAME="site_name"
 SEARCHDOMAIN="search-name"
 REPLACEDOMAIN="local.site-name"
 # Wordpress multisite network (true/false)
-MULTISITE="true"
+MULTISITE=false
 # Append additional config to wp-config.php
 EXTRA_CONFIG="
 // No extra config, but if there was it would go here.
@@ -62,21 +62,21 @@ echo "Running Composer to download dependencies"
 composer install --prefer-dist
 
 #Multi site configuration
-if [MULTISITE = true] then
-MULTISITE_CONFIG="
-	define('WP_ALLOW_MULTISITE', true);
-	define('MULTISITE', true);
-	define('SUBDOMAIN', true);
-	define('DOMAIN_CURRENT_SITE', '$REPLACEDOMAIN');
-	define('PATH_CURRENT_SITE', '/');
-	define('SITE_ID_CURRENT_SITE', 1);
-	define('BLOG_ID_CURRENT_SITE', 1);
-	define('SUNRISE', true); 
+if $MULTISITE; then
+	MULTISITE_CONFIG="
+		define('WP_ALLOW_MULTISITE', true);
+		define('MULTISITE', true);
+		define('SUBDOMAIN', true);
+		define('DOMAIN_CURRENT_SITE', '$REPLACEDOMAIN');
+		define('PATH_CURRENT_SITE', '/');
+		define('SITE_ID_CURRENT_SITE', 1);
+		define('BLOG_ID_CURRENT_SITE', 1);
+		define('SUNRISE', true); 
 "
+	echo "WP Multisite settings saved"
 else
-MULTISITE_CONFIG ="
-// Not a multisite....
-"
+	MULTISITE_CONFIG=""
+	echo "$SITE_NAME is not a WP multisite..."
 fi
 
 # Let's get some config in the house
