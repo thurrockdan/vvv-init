@@ -106,7 +106,7 @@ else
 	echo "index.php already exists"
 fi
 # Load the composer stuff
-./wrapper-composer.sh update
+#./wrapper-composer.sh update
 
 # DATA_IN_DB=`mysql -u root --password=root --skip-column-names -e "SHOW TABLES FROM $DB_NAME;"`
 # if [ "" == "$DATA_IN_DB" ]; then
