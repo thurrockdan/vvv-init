@@ -24,7 +24,7 @@
         "johnpbloch/wordpress": "4.x",
         "wpackagist-plugin/akismet": "@stable",
         "wpackagist-plugin/wp-thumb": "@stable",
-        "wpackagist-theme/twentyfourteen": "@stable",
+        "wpackagist-theme/twentyfifteen": "@stable",
         "wpackagist-plugin/stream": "@stable"
     },
     "require-dev": {
