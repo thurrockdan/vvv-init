@@ -13,7 +13,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "http://wpackagist.org"
+            "url": "https://wpackagist.org"
         },
         {
             "type" : "vcs",
@@ -31,12 +31,6 @@
         "wpackagist-theme/twentyfifteen": "@stable",
         "wpackagist-plugin/stream": "@stable",
         "thurrockdan/basic-wordpress-theme": "*"
-    },
-    "require-dev": {
-        "wpackagist-plugin/user-switching": "*",
-        "wpackagist-plugin/theme-check": "*",
-        "wpackagist-plugin/query-monitor": "*",
-        "wpackagist-plugin/debug-bar": "*"
     },
     "extra": {
         "wordpress-install-dir": "public_html/wp/",
