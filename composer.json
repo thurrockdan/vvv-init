@@ -28,7 +28,7 @@
         "johnpbloch/wordpress": "4.x",
         "wpackagist-plugin/akismet": "@stable",
         "wpackagist-plugin/wp-thumb": "@stable",
-        "wpackagist-theme/twentyfifteen": "@stable",
+        "wpackagist-theme/twentyseventeen": "@stable",
         "wpackagist-plugin/stream": "@stable",
         "thurrockdan/basic-wordpress-theme": "*"
     },
