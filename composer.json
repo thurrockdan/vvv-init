@@ -1,11 +1,11 @@
 {
-    "name": "pie/vvv-init",
+    "name": "EcomUK/vvv-init",
     "description": "An auto-site setup for VVV",
-    "homepage": "https://github.com/pie/vvv-init",
+    "homepage": "https://github.com/pie/EcomUK",
     "authors": [
         {
-            "name": "PIE",
-            "homepage": "http://pie.co.de"
+            "name": "ECOM UK Ltd",
+            "homepage": "https://www.ecom.uk.com"
         }
     ],
     "type": "project",
@@ -14,6 +14,10 @@
         {
             "type": "composer",
             "url": "http://wpackagist.org"
+        },
+        {
+            "type" : "vcs",
+            "url" : "git@github.com:thurrockdan/basic-wordpress-theme.git"
         }
     ],
     "config": {
@@ -25,7 +29,8 @@
         "wpackagist-plugin/akismet": "@stable",
         "wpackagist-plugin/wp-thumb": "@stable",
         "wpackagist-theme/twentyfifteen": "@stable",
-        "wpackagist-plugin/stream": "@stable"
+        "wpackagist-plugin/stream": "@stable",
+        "thurrockdan/basic-wordpress-theme": "*"
     },
     "require-dev": {
         "wpackagist-plugin/user-switching": "*",

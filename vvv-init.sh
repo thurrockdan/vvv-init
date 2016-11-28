@@ -1,11 +1,11 @@
 #!/bin/bash
 # Just a human readable description of this site
-SITE_NAME="Site Name"
+SITE_NAME="Wordpress Dev"
 # The name (to be) used by MySQL for the DB
-DB_NAME="site_name"
+DB_NAME="wordpress-dev"
 # Values for searching and replacing
-SEARCHDOMAIN="search-name"
-REPLACEDOMAIN="local.site-name"
+SEARCHDOMAIN="wordpress-dev"
+REPLACEDOMAIN="local.wordpress-dev"
 # Wordpress multisite network (true/false)
 MULTISITE=false
 # Append additional config to wp-config.php
