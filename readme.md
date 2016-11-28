@@ -17,6 +17,11 @@ You may want to [read our overview](https://github.com/cftp/vvv-init/wiki).
 11. Copy or `git push` to a new repo or new branch in an existing repo
 12. Point people towards the `readme.md` in the repo you pushed to, so they can get going
 
+13. add the following to wp-config.php
+
+define ('WP_CONTENT_FOLDERNAME', '../wp-content');
+define ('WP_CONTENT_DIR', ABSPATH . WP_CONTENT_FOLDERNAME) ;
+
 ## Using Composer
 
 See [Composer](https://github.com/cftp/vvv-init/wiki/Introduction#composer) and [Private Repos](https://github.com/cftp/vvv-init/wiki/Introduction#private-repos)
